@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سكاي مول | SKY MALL - تسوق أفضل المنتجات في صنعاء</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            50: '#f0f4f9',
+                            100: '#d9e2ec',
+                            600: '#1e3a8a',
+                            700: '#0f2c59',
+                            800: '#0b2042',
+                            900: '#07152b',
+                        },
+                        amberGold: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                        }
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts: Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f8fafc;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0f2c59;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f59e0b;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased pb-16 md:pb-0">
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="fixed top-5 left-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- Floating Direct Call & WhatsApp Button -->
+    <a href="https://wa.me/967780404035" target="_blank" class="fixed bottom-20 md:bottom-6 right-6 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl z-40 transition-transform hover:scale-110">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+    </a>
+
+    <!-- 1. Top Announcement Bar -->
+    <div class="bg-navy-900 text-white text-xs md:text-sm py-2 px-4 shadow-xs border-b border-navy-800">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center gap-4">
+                <span class="flex items-center gap-1.5 font-medium">
+                    <i class="fa-solid fa-location-dot text-amberGold-500"></i>
+                    الفرع الرئيسي: <strong class="text-amberGold-400">اليمن - صنعاء - شارع الأصبحي</strong>
+                </span>
+                <span class="hidden md:inline-flex items-center gap-1.5 border-r border-navy-700 pr-4">
+                    <i class="fa-regular fa-clock text-amberGold-500"></i>
+                    مفتوح يومياً: 08:00 صباحاً - 12:00 منتصف الليل
+                </span>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="tel:780404035" class="hover:text-amberGold-400 transition-colors flex items-center gap-1.5 font-bold">
+                    <i class="fa-solid fa-phone text-amberGold-500"></i>
+                    <span>الطلب السريع: 780404035</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Main Header with Custom Styled Logo -->
+    <header class="bg-white sticky top-0 z-40 shadow-sm border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+            
+            <!-- Logo Inspired by Uploaded Image -->
+            <a href="#" class="flex items-center gap-3 shrink-0 group">
+                <div class="flex flex-col items-center">
+                    <div class="relative flex items-center gap-1">
+                        <!-- Dynamic Logo Drawing matching sky mall image -->
+                        <div class="relative flex flex-col items-center">
+                            <span class="text-xs font-extrabold text-amberGold-500 tracking-wider font-sans -mb-1">SKY</span>
+                            <span class="text-2xl md:text-3xl font-black text-navy-700 tracking-tight leading-none">سكاي</span>
+                        </div>
+                        <div class="flex flex-col items-center ml-1">
+                            <span class="text-2xl md:text-3xl font-black text-navy-700 leading-none">مول</span>
+                            <span class="text-xs font-extrabold text-amberGold-500 tracking-widest font-sans -mt-0.5">MALL</span>
+                        </div>
+                    </div>
+                    <!-- Curved Orange Accent Swoosh -->
+                    <div class="w-full h-1.5 bg-gradient-to-r from-navy-700 via-amberGold-500 to-amberGold-400 rounded-full mt-0.5"></div>
+                </div>
+            </a>
+
+            <!-- Search Bar -->
+            <div class="relative flex-1 max-w-xl hidden md:block">
+                <div class="relative flex items-center">
+                    <input type="text" id="main-search-input" onkeyup="handleSearch(this.value)" placeholder="ابحث عن أرز، زيت، حليب، عصائر، خضروات..." class="w-full bg-slate-50 border border-slate-200 rounded-2xl py-2.5 pr-11 pl-24 text-sm focus:outline-none focus:border-navy-700 focus:bg-white transition-all">
+                    <i class="fa-solid fa-magnifying-glass absolute right-4 text-slate-400"></i>
+                    <button class="absolute left-1.5 bg-navy-700 hover:bg-navy-800 text-white text-xs px-4 py-1.5 rounded-xl transition-colors font-bold">
+                        بحث
+                    </button>
+                </div>
+                <!-- Search Suggestions -->
+                <div id="search-suggestions" class="hidden absolute top-full left-0 right-0 bg-white border border-slate-100 rounded-2xl shadow-xl mt-2 py-2 z-50 max-h-72 overflow-y-auto"></div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex items-center gap-2 md:gap-4">
+                
+                <!-- Account Button -->
+                <button onclick="toggleModal('account-modal')" class="p-2.5 hover:bg-slate-100 rounded-2xl text-slate-700 transition-colors flex items-center gap-2">
+                    <i class="fa-regular fa-user text-xl text-navy-700"></i>
+                    <span class="hidden lg:inline text-xs font-bold">حسابي</span>
+                </button>
+
+                <!-- Wishlist Button -->
+                <button onclick="openWishlist()" class="p-2.5 hover:bg-slate-100 rounded-2xl text-slate-700 transition-colors relative">
+                    <i class="fa-regular fa-heart text-xl text-navy-700"></i>
+                    <span id="wishlist-badge" class="absolute top-1 right-1 bg-amberGold-500 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+                </button>
+
+                <!-- Shopping Cart Toggle -->
+                <button onclick="toggleCartDrawer(true)" class="bg-navy-700 hover:bg-navy-800 text-white px-4 py-2.5 rounded-2xl flex items-center gap-3 transition-all shadow-md">
+                    <div class="relative">
+                        <i class="fa-solid fa-cart-shopping text-lg"></i>
+                        <span id="cart-badge" class="absolute -top-2 -right-2 bg-amberGold-500 text-navy-900 text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+                    </div>
+                    <div class="text-right hidden sm:block">
+                        <div class="text-[10px] text-slate-200 font-medium leading-none">السلة الإلكترونية</div>
+                        <div id="cart-header-total" class="text-xs font-extrabold text-amberGold-400">0 ر.ي</div>
+                    </div>
+                </button>
+
+            </div>
+        </div>
+
+        <!-- Mobile Search -->
+        <div class="px-4 pb-3 md:hidden">
+            <div class="relative flex items-center">
+                <input type="text" onkeyup="handleSearch(this.value)" placeholder="ابحث عن جميع المنتجات..." class="w-full bg-slate-100 border-0 rounded-xl py-2 pr-10 pl-4 text-xs focus:ring-2 focus:ring-navy-700 focus:bg-white">
+                <i class="fa-solid fa-magnifying-glass absolute right-3.5 text-slate-400 text-sm"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- 3. Navigation Bar (Categories) -->
+    <nav class="bg-navy-800 text-white shadow-md overflow-x-auto no-scrollbar">
+        <div class="max-w-7xl mx-auto px-4 flex items-center gap-2 text-xs md:text-sm whitespace-nowrap py-2.5">
+            <button onclick="filterByCategory('all')" class="category-nav-btn active flex items-center gap-2 px-4 py-1.5 rounded-xl bg-amberGold-500 text-navy-900 font-bold transition-colors">
+                <i class="fa-solid fa-border-all"></i> جميع الأقسام
+            </button>
+            <button onclick="filterByCategory('grocery')" class="category-nav-btn flex items-center gap-2 px-4 py-1.5 rounded-xl hover:bg-navy-700 transition-colors">
+                <i class="fa-solid fa-wheat-awn text-amberGold-400"></i> المواد الغذائية
+            </button>
+            <button onclick="filterByCategory('veggies')" class="category-nav-btn flex items-center gap-2 px-4 py-1.5 rounded-xl hover:bg-navy-700 transition-colors">
+                <i class="fa-solid fa-carrot text-amberGold-400"></i> خضروات وفواكه
+            </button>
+            <button onclick="filterByCategory('dairy')" class="category-nav-btn flex items-center gap-2 px-4 py-1.5 rounded-xl hover:bg-navy-700 transition-colors">
+                <i class="fa-solid fa-cheese text-amberGold-400"></i> ألبان وأجبان
+            </button>
+            <button onclick="filterByCategory('beverages')" class="category-nav-btn flex items-center gap-2 px-4 py-1.5 rounded-xl hover:bg-navy-700 transition-colors">
+                <i class="fa-solid fa-bottle-water text-amberGold-400"></i> عصائر ومشروبات
+            </button>
+            <button onclick="filterByCategory('snacks')" class="category-nav-btn flex items-center gap-2 px-4 py-1.5 rounded-xl hover:bg-navy-700 transition-colors">
+                <i class="fa-solid fa-cookie text-amberGold-400"></i> حلويات وبسكويت
+            </button>
+            <button onclick="filterByCategory('household')" class="category-nav-btn flex items-center gap-2 px-4 py-1.5 rounded-xl hover:bg-navy-700 transition-colors">
+                <i class="fa-solid fa-soap text-amberGold-400"></i> شوامخ ومستلزمات منزلية
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-6 space-y-10">
+
+        <!-- 4. Hero Banner -->
+        <section class="relative rounded-3xl overflow-hidden shadow-xl bg-gradient-to-r from-navy-900 via-navy-800 to-navy-700 text-white">
+            <div class="grid grid-cols-1 md:grid-cols-2 items-center p-6 sm:p-10 md:p-12 gap-6 relative z-10">
+                <div class="space-y-4 text-center md:text-right">
+                    <span class="inline-block bg-amberGold-500 text-navy-900 font-black text-xs px-4 py-1.5 rounded-full shadow-md">
+                        🌟 عروض سكاي مول - صنعاء الأصبحي
+                    </span>
+                    <h2 class="text-2xl sm:text-4xl md:text-5xl font-black leading-tight">
+                        جميع احتياجات بيتك بأفضل الأسعار في <span class="text-amberGold-400">صنعاء</span>
+                    </h2>
+                    <p class="text-slate-300 text-sm sm:text-base max-w-md">
+                        تسوق المواد الغذائية، المنتجات الطازجة، والمستلزمات المنزلية مع خدمة التوصيل السريع لجميع أحياء الأصبحي وحمدة وصنعاء.
+                    </p>
+                    <div class="pt-2 flex flex-wrap gap-3 justify-center md:justify-start">
+                        <a href="#products-section" class="bg-amberGold-500 hover:bg-amberGold-600 text-navy-900 font-extrabold px-6 py-3 rounded-2xl shadow-lg transition-all text-sm flex items-center gap-2">
+                            تصفح العروض الآن <i class="fa-solid fa-arrow-left"></i>
+                        </a>
+                        <a href="tel:780404035" class="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white font-bold px-5 py-3 rounded-2xl border border-white/20 text-xs flex items-center gap-2">
+                            <i class="fa-solid fa-headset text-amberGold-400"></i> اتصل بنا: 780404035
+                        </a>
+                    </div>
+                </div>
+                <div class="relative flex justify-center items-center">
+                    <div class="w-64 h-64 sm:w-80 sm:h-80 relative flex items-center justify-center">
+                        <div class="absolute inset-0 bg-amberGold-500/10 rounded-full animate-pulse"></div>
+                        <!-- SVG Supermarket Basket Custom Graphic -->
+                        <svg class="w-full h-full drop-shadow-2xl" viewBox="0 0 200 200" fill="none">
+                            <circle cx="100" cy="100" r="75" fill="#0F2C59" fill-opacity="0.5"/>
+                            <path d="M45 110 C45 145, 155 145, 155 110 L165 80 L35 80 Z" fill="#F59E0B"/>
+                            <path d="M35 80 L165 80 L155 70 L45 70 Z" fill="#D97706"/>
+                            <path d="M65 70 C65 35, 135 35, 135 70" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/>
+                            <circle cx="80" cy="65" r="16" fill="#EF4444"/>
+                            <circle cx="115" cy="60" r="14" fill="#22C55E"/>
+                            <rect x="92" y="45" width="16" height="25" rx="3" fill="#3B82F6"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute -bottom-10 -right-10 w-48 h-48 bg-amberGold-500/10 rounded-full blur-2xl"></div>
+        </section>
+
+        <!-- 5. Features Grid -->
+        <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-2xs flex items-center gap-3">
+                <div class="w-12 h-12 bg-navy-50 text-navy-700 rounded-2xl flex items-center justify-center text-xl shrink-0">
+                    <i class="fa-solid fa-truck-fast text-amberGold-600"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm text-navy-900">توصيل سريع</h4>
+                    <p class="text-xs text-slate-500">أمانة العاصمة وحي الأصبحي</p>
+                </div>
+            </div>
+            <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-2xs flex items-center gap-3">
+                <div class="w-12 h-12 bg-amber-50 text-amberGold-600 rounded-2xl flex items-center justify-center text-xl shrink-0">
+                    <i class="fa-solid fa-award"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm text-navy-900">جودة مضمونة</h4>
+                    <p class="text-xs text-slate-500">منتجات طازجة وأصلية</p>
+                </div>
+            </div>
+            <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-2xs flex items-center gap-3">
+                <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-xl shrink-0">
+                    <i class="fa-solid fa-wallet"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm text-navy-900">خيارات دفع متعدّدة</h4>
+                    <p class="text-xs text-slate-500">الكريمي، النجم ون كاش كاش</p>
+                </div>
+            </div>
+            <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-2xs flex items-center gap-3">
+                <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center text-xl shrink-0">
+                    <i class="fa-solid fa-phone-volume"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm text-navy-900">خدمة العملاء</h4>
+                    <p class="text-xs text-slate-500">اتصل بنا: 780404035</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Category Explorer Grid -->
+        <section class="space-y-4">
+            <div class="flex justify-between items-end">
+                <div>
+                    <h3 class="text-xl md:text-2xl font-black text-navy-900">تسوق حسب القسم</h3>
+                    <p class="text-xs md:text-sm text-slate-500">اختر قسمك المفضل لاستعراض المنتجات والأسعار بالريال اليمني</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 md:gap-4">
+                <div onclick="filterByCategory('grocery')" class="cursor-pointer group bg-white border border-slate-100 p-4 rounded-2xl text-center shadow-2xs hover:shadow-md hover:border-amberGold-500 transition-all">
+                    <div class="w-12 h-12 mx-auto bg-amber-50 text-amberGold-600 rounded-2xl flex items-center justify-center text-2xl mb-2 group-hover:scale-110 transition-transform">
+                        🌾
+                    </div>
+                    <h4 class="font-bold text-xs md:text-sm text-navy-900">المواد الغذائية</h4>
+                </div>
+                <div onclick="filterByCategory('veggies')" class="cursor-pointer group bg-white border border-slate-100 p-4 rounded-2xl text-center shadow-2xs hover:shadow-md hover:border-amberGold-500 transition-all">
+                    <div class="w-12 h-12 mx-auto bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl mb-2 group-hover:scale-110 transition-transform">
+                        🥦
+                    </div>
+                    <h4 class="font-bold text-xs md:text-sm text-navy-900">خضروات وفواكه</h4>
+                </div>
+                <div onclick="filterByCategory('dairy')" class="cursor-pointer group bg-white border border-slate-100 p-4 rounded-2xl text-center shadow-2xs hover:shadow-md hover:border-amberGold-500 transition-all">
+                    <div class="w-12 h-12 mx-auto bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-2xl mb-2 group-hover:scale-110 transition-transform">
+                        🧀
+                    </div>
+                    <h4 class="font-bold text-xs md:text-sm text-navy-900">ألبان وأجبان</h4>
+                </div>
+                <div onclick="filterByCategory('beverages')" class="cursor-pointer group bg-white border border-slate-100 p-4 rounded-2xl text-center shadow-2xs hover:shadow-md hover:border-amberGold-500 transition-all">
+                    <div class="w-12 h-12 mx-auto bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center text-2xl mb-2 group-hover:scale-110 transition-transform">
+                        🧃
+                    </div>
+                    <h4 class="font-bold text-xs md:text-sm text-navy-900">عصائر ومشروبات</h4>
+                </div>
+                <div onclick="filterByCategory('snacks')" class="cursor-pointer group bg-white border border-slate-100 p-4 rounded-2xl text-center shadow-2xs hover:shadow-md hover:border-amberGold-500 transition-all">
+                    <div class="w-12 h-12 mx-auto bg-red-50 text-red-600 rounded-2xl flex items-center justify-center text-2xl mb-2 group-hover:scale-110 transition-transform">
+                        🍫
+                    </div>
+                    <h4 class="font-bold text-xs md:text-sm text-navy-900">حلويات وبسكويت</h4>
+                </div>
+                <div onclick="filterByCategory('household')" class="cursor-pointer group bg-white border border-slate-100 p-4 rounded-2xl text-center shadow-2xs hover:shadow-md hover:border-amberGold-500 transition-all">
+                    <div class="w-12 h-12 mx-auto bg-cyan-50 text-cyan-600 rounded-2xl flex items-center justify-center text-2xl mb-2 group-hover:scale-110 transition-transform">
+                        🧼
+                    </div>
+                    <h4 class="font-bold text-xs md:text-sm text-navy-900">مستلزمات منزلية</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Products Section with Filtering -->
+        <section id="products-section" class="space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-4">
+                <div>
+                    <h3 class="text-xl md:text-2xl font-black text-navy-900">منتجات سكاي مول</h3>
+                    <p class="text-xs md:text-sm text-slate-500">الأسعار معتمدة بالريال اليمني (ر.ي)</p>
+                </div>
+
+                <!-- Category Pills -->
+                <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
+                    <button onclick="filterByCategory('all')" class="tab-btn active px-4 py-2 rounded-xl text-xs font-bold transition-all bg-navy-700 text-white shadow-xs">
+                        الكل
+                    </button>
+                    <button onclick="filterByCategory('grocery')" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white text-slate-600 border border-slate-200 hover:border-navy-700">
+                        مواد غذائية
+                    </button>
+                    <button onclick="filterByCategory('veggies')" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white text-slate-600 border border-slate-200 hover:border-navy-700">
+                        خضروات
+                    </button>
+                    <button onclick="filterByCategory('dairy')" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white text-slate-600 border border-slate-200 hover:border-navy-700">
+                        ألبان
+                    </button>
+                    <button onclick="filterByCategory('beverages')" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white text-slate-600 border border-slate-200 hover:border-navy-700">
+                        مشروبات
+                    </button>
+                    <button onclick="filterByCategory('household')" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white text-slate-600 border border-slate-200 hover:border-navy-700">
+                        منظفات
+                    </button>
+                </div>
+            </div>
+
+            <!-- Products Grid Container -->
+            <div id="products-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                <!-- Injected via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 8. Interactive Cart Drawer -->
+    <div id="cart-drawer-backdrop" onclick="toggleCartDrawer(false)" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    <div id="cart-drawer" class="fixed top-0 left-0 bottom-0 w-full max-w-md bg-white z-50 shadow-2xl transform -translate-x-full transition-transform duration-300 flex flex-col">
+        
+        <!-- Cart Drawer Header -->
+        <div class="p-4 border-b border-slate-100 flex items-center justify-between bg-navy-900 text-white">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-basket-shopping text-amberGold-400 text-lg"></i>
+                <h3 class="font-bold text-base">سلة تسوق سكاي مول (<span id="cart-drawer-count">0</span>)</h3>
+            </div>
+            <button onclick="toggleCartDrawer(false)" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <!-- Cart Drawer Items List -->
+        <div id="cart-items-list" class="flex-1 overflow-y-auto p-4 divide-y divide-slate-100">
+            <!-- Dynamic items -->
+        </div>
+
+        <!-- Cart Drawer Footer -->
+        <div class="p-4 border-t border-slate-100 bg-slate-50 space-y-3">
+            <div class="space-y-1.5 text-xs text-slate-600">
+                <div class="flex justify-between">
+                    <span>المجموع الفرعي:</span>
+                    <span id="cart-subtotal" class="font-bold text-navy-900">0 ر.ي</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>رسوم التوصيل (داخل صنعاء):</span>
+                    <span id="cart-delivery" class="font-bold text-navy-900">1,000 ر.ي</span>
+                </div>
+                <div class="flex justify-between text-base font-black text-navy-900 border-t border-slate-200 pt-2">
+                    <span>الإجمالي الكلي:</span>
+                    <span id="cart-total" class="text-amberGold-600">0 ر.ي</span>
+                </div>
+            </div>
+
+            <!-- Checkout Button -->
+            <button onclick="openCheckoutModal()" class="w-full bg-navy-700 hover:bg-navy-800 text-white font-bold py-3 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 text-sm">
+                <span>إتمام الطلب الآن</span>
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 9. Checkout Modal (Yemeni Options) -->
+    <div id="checkout-modal" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-3xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl p-6 relative">
+            <button onclick="toggleModal('checkout-modal')" class="absolute top-4 left-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div id="checkout-step-1">
+                <div class="mb-5 border-b border-slate-100 pb-3">
+                    <h3 class="text-xl font-bold text-navy-900">إتمام الشراء - سكاي مول</h3>
+                    <p class="text-xs text-slate-500">عنوان التوصيل في أمانة العاصمة صنعاء وطريقة الدفع</p>
+                </div>
+
+                <form onsubmit="handleCheckoutSubmit(event)" class="space-y-4">
+                    <div class="space-y-3">
+                        <h4 class="text-xs font-extrabold text-navy-700 uppercase">1. بيانات التوصيل</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">الاسم الكامل</label>
+                                <input type="text" required placeholder="مثال: محمد عبدالله" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs focus:ring-2 focus:ring-navy-700 focus:bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">رقم الجوال</label>
+                                <input type="tel" required placeholder="77XXXXXXX" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs focus:ring-2 focus:ring-navy-700 focus:bg-white">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">المنطقة / الحي (صنعاء)</label>
+                            <select class="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs focus:ring-2 focus:ring-navy-700 focus:bg-white">
+                                <option>شارع الأصبحي (توصيل مجاني لبعض الشوارع)</option>
+                                <option>حي حدة / الخمسين</option>
+                                <option>شارع الستين / أرتل</option>
+                                <option>حي بيت بوس / المقالح</option>
+                                <option>شميلة / المقالح</option>
+                                <option>حي آخر داخل صنعاء</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">العنوان التفصيلي (اسم الشارع / معلم بارز)</label>
+                            <input type="text" required placeholder="مثال: شارع الأصبحي - جوار..." class="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs focus:ring-2 focus:ring-navy-700 focus:bg-white">
+                        </div>
+                    </div>
+
+                    <!-- Payment Options Yemen -->
+                    <div class="space-y-3 pt-2">
+                        <h4 class="text-xs font-extrabold text-navy-700 uppercase">2. طريقة الدفع</h4>
+                        <div class="grid grid-cols-2 gap-2">
+                            <label class="border-2 border-navy-700 bg-navy-50/40 p-3 rounded-2xl flex items-center gap-2 cursor-pointer">
+                                <input type="radio" name="payment" value="cod" checked class="text-navy-700">
+                                <span class="text-xs font-bold text-navy-900">الدفع عند الاستلام</span>
+                            </label>
+                            <label class="border border-slate-200 p-3 rounded-2xl flex items-center gap-2 cursor-pointer hover:border-navy-700">
+                                <input type="radio" name="payment" value="kuraimi" class="text-navy-700">
+                                <span class="text-xs font-bold text-navy-900">الكريمي (حاسب)</span>
+                            </label>
+                            <label class="border border-slate-200 p-3 rounded-2xl flex items-center gap-2 cursor-pointer hover:border-navy-700">
+                                <input type="radio" name="payment" value="najm" class="text-navy-700">
+                                <span class="text-xs font-bold text-navy-900">النجم للصرّافة</span>
+                            </label>
+                            <label class="border border-slate-200 p-3 rounded-2xl flex items-center gap-2 cursor-pointer hover:border-navy-700">
+                                <input type="radio" name="payment" value="onecash" class="text-navy-700">
+                                <span class="text-xs font-bold text-navy-900">محفظة ون كاش</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                        <div>
+                            <span class="text-[10px] text-slate-400 block">الإجمالي بالريال اليمني</span>
+                            <span id="checkout-modal-total" class="text-lg font-black text-amberGold-600">0 ر.ي</span>
+                        </div>
+                        <button type="submit" class="bg-amberGold-500 hover:bg-amberGold-600 text-navy-900 font-extrabold px-6 py-3 rounded-2xl shadow-md transition-all text-xs">
+                            تأكيد الطلب
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Confirmation Step -->
+            <div id="checkout-step-success" class="hidden text-center py-6 space-y-4">
+                <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-3xl mx-auto animate-bounce">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <h3 class="text-2xl font-black text-navy-900">تم استلام طلبك بنجاح!</h3>
+                <p class="text-xs text-slate-500 max-w-xs mx-auto">
+                    شكراً لتسوقك من <strong class="text-navy-700">سكاي مول (الأصبحي)</strong>. رقم طلبك هو <strong id="order-id-display" class="text-amberGold-600">#SKY-8821</strong>
+                </p>
+                <p class="text-xs text-slate-600 bg-slate-50 p-3 rounded-xl border border-slate-100">
+                    سيقوم موظف الخدمة بالتواصل معك على الرقم المدخل لتأكيد انطلاق مندوب التوصيل.
+                </p>
+                <button onclick="closeCheckoutModalAndReset()" class="bg-navy-700 hover:bg-navy-800 text-white font-bold px-8 py-2.5 rounded-xl text-xs transition-colors">
+                    العودة للتسوق
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div id="product-detail-modal" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-3xl max-w-xl w-full shadow-2xl p-6 relative">
+            <button onclick="toggleModal('product-detail-modal')" class="absolute top-4 left-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-slate-50 rounded-2xl p-6 flex items-center justify-center text-7xl">
+                    <span id="modal-product-icon">🌾</span>
+                </div>
+                <div class="space-y-3">
+                    <span id="modal-product-category" class="text-[10px] font-bold text-navy-700 bg-navy-50 px-2.5 py-1 rounded-md">المواد الغذائية</span>
+                    <h3 id="modal-product-title" class="text-xl font-bold text-navy-900">أرز أبيض فاخر</h3>
+                    <p id="modal-product-unit" class="text-xs text-slate-400">الوزن: 10 كجم</p>
+                    <p id="modal-product-desc" class="text-xs text-slate-600 leading-relaxed">منتج أصلي درجة أولى متوفر في سكاي مول - صنعاء شارع الأصبحي.</p>
+                    <div class="flex items-baseline gap-2 pt-2">
+                        <span id="modal-product-price" class="text-2xl font-black text-amberGold-600">18,500 ر.ي</span>
+                    </div>
+                    <button id="modal-add-btn" class="w-full bg-navy-700 hover:bg-navy-800 text-white font-bold py-3 rounded-xl shadow-md transition-all text-xs flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-cart-plus"></i> إضافة إلى السلة
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Account Modal -->
+    <div id="account-modal" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-3xl max-w-sm w-full shadow-2xl p-6 relative text-center space-y-4">
+            <button onclick="toggleModal('account-modal')" class="absolute top-4 left-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="w-14 h-14 bg-navy-50 text-navy-700 rounded-full flex items-center justify-center text-2xl mx-auto">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <h3 class="text-lg font-bold text-navy-900">حسابي في سكاي مول</h3>
+            <p class="text-xs text-slate-500">سجل رقم هاتفك لمتابعة الطلبات المباشرة</p>
+            <input type="tel" placeholder="77XXXXXXXX" class="w-full border border-slate-200 rounded-xl p-2.5 text-xs text-center focus:ring-2 focus:ring-navy-700">
+            <button onclick="showToast('تم إرسال رمز التحقق لرقمك'); toggleModal('account-modal');" class="w-full bg-navy-700 hover:bg-navy-800 text-white font-bold py-2.5 rounded-xl text-xs transition-colors">
+                دخول
+            </button>
+        </div>
+    </div>
+
+    <!-- Wishlist Modal -->
+    <div id="wishlist-modal" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-3xl max-w-md w-full shadow-2xl p-6 relative space-y-4">
+            <button onclick="toggleModal('wishlist-modal')" class="absolute top-4 left-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="text-lg font-bold flex items-center gap-2 text-navy-900">
+                <i class="fa-solid fa-heart text-red-500"></i> القائمة المفضلة
+            </h3>
+            <div id="wishlist-items-container" class="space-y-2 max-h-60 overflow-y-auto">
+                <!-- Dynamically filled -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 10. Footer Section -->
+    <footer class="bg-navy-900 text-slate-300 pt-10 pb-20 md:pb-8 border-t border-navy-800">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            <div class="space-y-3">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl font-black text-amberGold-400">سكاي مول</span>
+                    <span class="text-xs font-bold text-slate-400">SKY MALL</span>
+                </div>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    السوبر ماركت الشامل لتوفير كافة احتياجات الأسرة في صنعاء بأعلى جودة وأفضل الأسعار بالريال اليمني.
+                </p>
+            </div>
+
+            <div class="space-y-2">
+                <h5 class="text-white font-bold text-sm">العنوان والتواصل</h5>
+                <ul class="space-y-1.5 text-xs text-slate-400">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-amberGold-500"></i> اليمن - صنعاء - شارع الأصبحي</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-phone text-amberGold-500"></i> الجوال: 780404035</li>
+                    <li class="flex items-center gap-2"><i class="fa-brands fa-whatsapp text-amberGold-500"></i> واتساب: 780404035</li>
+                </ul>
+            </div>
+
+            <div class="space-y-2">
+                <h5 class="text-white font-bold text-sm">أقسام التسوق</h5>
+                <ul class="space-y-1.5 text-xs text-slate-400">
+                    <li><a href="#" onclick="filterByCategory('grocery')" class="hover:text-amberGold-400">المواد الغذائية الرئيسية</a></li>
+                    <li><a href="#" onclick="filterByCategory('veggies')" class="hover:text-amberGold-400">الفواكه والخضروات الطازجة</a></li>
+                    <li><a href="#" onclick="filterByCategory('dairy')" class="hover:text-amberGold-400">الألبان ومستلزمات الفطور</a></li>
+                    <li><a href="#" onclick="filterByCategory('household')" class="hover:text-amberGold-400">الشوامخ والمنظفات</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-2">
+                <h5 class="text-white font-bold text-sm">طرق الدفع المعتمدة</h5>
+                <div class="flex flex-wrap gap-2 text-xs text-slate-300">
+                    <span class="bg-navy-800 px-2.5 py-1 rounded-lg border border-navy-700">الدفع عند الاستلام</span>
+                    <span class="bg-navy-800 px-2.5 py-1 rounded-lg border border-navy-700">الكريمي (حاسب)</span>
+                    <span class="bg-navy-800 px-2.5 py-1 rounded-lg border border-navy-700">النجم</span>
+                    <span class="bg-navy-800 px-2.5 py-1 rounded-lg border border-navy-700">ون كاش</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 mt-8 pt-6 border-t border-navy-800 text-center text-xs text-slate-500">
+            <p>© 2026 سكاي مول - SKY MALL (صنعاء - شارع الأصبحي). جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation Bar -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 py-2 px-4 flex justify-around items-center z-40 md:hidden shadow-lg">
+        <a href="#" class="flex flex-col items-center gap-1 text-navy-700 font-bold">
+            <i class="fa-solid fa-house text-base"></i>
+            <span class="text-[10px]">الرئيسية</span>
+        </a>
+        <a href="#products-section" class="flex flex-col items-center gap-1 text-slate-500 hover:text-navy-700">
+            <i class="fa-solid fa-grid-2 text-base"></i>
+            <span class="text-[10px]">الأقسام</span>
+        </a>
+        <button onclick="toggleCartDrawer(true)" class="flex flex-col items-center gap-1 text-slate-500 relative">
+            <i class="fa-solid fa-cart-shopping text-base"></i>
+            <span id="mobile-cart-badge" class="absolute -top-1 right-2 bg-amberGold-500 text-navy-900 text-[9px] w-3.5 h-3.5 rounded-full flex items-center justify-center font-bold">0</span>
+            <span class="text-[10px]">السلة</span>
+        </button>
+        <button onclick="openWishlist()" class="flex flex-col items-center gap-1 text-slate-500 hover:text-navy-700">
+            <i class="fa-regular fa-heart text-base"></i>
+            <span class="text-[10px]">المفضلة</span>
+        </button>
+        <button onclick="toggleModal('account-modal')" class="flex flex-col items-center gap-1 text-slate-500 hover:text-navy-700">
+            <i class="fa-regular fa-user text-base"></i>
+            <span class="text-[10px]">حسابي</span>
+        </button>
+    </div>
+
+    <!-- JavaScript Application State & Business Logic -->
+    <script>
+        // Products Master Dataset in YER (الريال اليمني)
+        const productsData = [
+            {
+                id: 1,
+                name: "أرز بسمتي فاخر (درجة أولى)",
+                category: "grocery",
+                price: 18500,
+                oldPrice: 21000,
+                unit: "كيس 10 كجم",
+                icon: "🌾",
+                rating: 4.9,
+                desc: "أرز بسمتي هندي طويل الحبة عالي الجودة متوفر في سكاي مول."
+            },
+            {
+                id: 2,
+                name: "زيت طبخ نقي (عافية)",
+                category: "grocery",
+                price: 4800,
+                oldPrice: 5500,
+                unit: "عبوة 1.5 لتر",
+                icon: "🛢️",
+                rating: 4.8,
+                desc: "زيت طعام صحي خفيف ومثالي للقلي والطبخ اليومي."
+            },
+            {
+                id: 3,
+                name: "حليب ممتاز مجفف (مدهش)",
+                category: "dairy",
+                price: 12000,
+                oldPrice: 13500,
+                unit: "علبة 2.25 كجم",
+                icon: "🥛",
+                rating: 5.0,
+                desc: "حليب بودرة كامل الدسم غني بالفيتامينات والكالسيوم."
+            },
+            {
+                id: 4,
+                name: "جبنة بيضاء بقرية طازجة",
+                category: "dairy",
+                price: 2500,
+                oldPrice: 3000,
+                unit: "500 جرام",
+                icon: "🧀",
+                rating: 4.7,
+                desc: "جبنة بيضاء طبيعية خفيفة الملح طازجة يومياً."
+            },
+            {
+                id: 5,
+                name: "تفاح سكري طازج",
+                category: "veggies",
+                price: 2200,
+                oldPrice: 2800,
+                unit: "1 كجم",
+                icon: "🍎",
+                rating: 4.8,
+                desc: "تفاح أحمر طازج حلو المذاق منقى بعناية."
+            },
+            {
+                id: 6,
+                name: "موز بلدي فاخر",
+                category: "veggies",
+                price: 1200,
+                oldPrice: 1500,
+                unit: "1 كجم",
+                icon: "🍌",
+                rating: 4.9,
+                desc: "موز بلدي طبيعي وطازج ذو طعم غني وممتاز."
+            },
+            {
+                id: 7,
+                name: "عصير راني حبيبات متنوع",
+                category: "beverages",
+                price: 500,
+                oldPrice: 600,
+                unit: "علبة 240 مل",
+                icon: "🧃",
+                rating: 4.6,
+                desc: "عصير مانجو أو خوخ مع قطع الفاكهة الطبيعية المنعشة."
+            },
+            {
+                id: 8,
+                name: "شاي كبوس أوراق كاملة",
+                category: "grocery",
+                price: 2800,
+                oldPrice: 3200,
+                unit: "باكيت 400 جرام",
+                icon: "☕",
+                rating: 5.0,
+                desc: "شاي يمني أحمر فاخر ومشهور بجودته ونكهته الممتازة."
+            },
+            {
+                id: 9,
+                name: "بسكويت ديمة متنوع",
+                category: "snacks",
+                price: 1500,
+                oldPrice: 1800,
+                unit: "علبة 12 قطعة",
+                icon: "🍪",
+                rating: 4.7,
+                desc: "بسكويت هادي ولذيذ وجبة خفيفة مع الشاي والقهوة."
+            },
+            {
+                id: 10,
+                name: "مسحوق غسيل تايد الأصلي",
+                category: "household",
+                price: 6500,
+                oldPrice: 7500,
+                unit: "كيس 2.5 كجم",
+                icon: "🧼",
+                rating: 4.9,
+                desc: "مسحوق غسيل أوتوماتيك وعادي لقوة ناصعة في تنظيف الملابس."
+            },
+            {
+                id: 11,
+                name: "سائل جلي لوكس ليمون",
+                category: "household",
+                price: 1800,
+                oldPrice: 2200,
+                unit: "قارورة 1 لتر",
+                icon: "🧴",
+                rating: 4.8,
+                desc: "سائل تنظيف الصحون برائحة الليمون المنعشة وقوة إزالة الدهون."
+            },
+            {
+                id: 12,
+                name: "طماطم بلدي طازجة",
+                category: "veggies",
+                price: 1000,
+                oldPrice: 1400,
+                unit: "1 كجم",
+                icon: "🍅",
+                rating: 4.6,
+                desc: "طماطم بلدي حمراء طازجة يومياً من المزارع إلى سكاي مول."
+            }
+        ];
+
+        // Global State variables
+        let cart = [];
+        let wishlist = [];
+        const DELIVERY_FEE = 1000; // 1,000 YER delivery in Sana'a
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts(productsData);
+            updateCartUI();
+        });
+
+        // Render Product Cards
+        function renderProducts(items) {
+            const container = document.getElementById('products-grid');
+            if (items.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full text-center py-12 text-slate-400">
+                        <i class="fa-solid fa-basket-shopping text-4xl mb-3"></i>
+                        <p class="font-bold">لا توجد منتجات مطابقة في البحث حالياً</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = items.map(product => {
+                const cartItem = cart.find(i => i.id === product.id);
+                const qty = cartItem ? cartItem.quantity : 0;
+                const isWish = wishlist.includes(product.id);
+
+                return `
+                    <div class="bg-white border border-slate-100 rounded-3xl p-4 shadow-2xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group relative">
+                        
+                        <div class="flex justify-between items-center mb-2">
+                            ${product.oldPrice ? `
+                                <span class="bg-amberGold-500 text-navy-900 text-[10px] font-black px-2 py-0.5 rounded-full">
+                                    توفير ${Math.round((1 - product.price/product.oldPrice)*100)}%
+                                </span>
+                            ` : '<span></span>'}
+                            
+                            <button onclick="toggleWishlist(${product.id})" class="w-8 h-8 rounded-full ${isWish ? 'bg-red-50 text-red-500' : 'bg-slate-50 text-slate-400'} hover:text-red-500 flex items-center justify-center transition-colors">
+                                <i class="fa-${isWish ? 'solid' : 'regular'} fa-heart text-sm"></i>
+                            </button>
+                        </div>
+
+                        <div onclick="openProductModal(${product.id})" class="cursor-pointer bg-slate-50 rounded-2xl py-6 flex items-center justify-center text-5xl mb-3 group-hover:scale-105 transition-transform">
+                            ${product.icon}
+                        </div>
+
+                        <div onclick="openProductModal(${product.id})" class="cursor-pointer space-y-1 mb-3">
+                            <span class="text-[10px] text-navy-700 font-bold bg-navy-50 px-2 py-0.5 rounded-md">${getCategoryLabel(product.category)}</span>
+                            <h4 class="font-bold text-xs sm:text-sm text-navy-900 line-clamp-1 group-hover:text-amberGold-600 transition-colors">${product.name}</h4>
+                            <p class="text-[11px] text-slate-400">${product.unit}</p>
+
+                            <div class="flex items-baseline gap-1.5 pt-1">
+                                <span class="text-sm sm:text-base font-black text-amberGold-600">${product.price.toLocaleString()} ر.ي</span>
+                                ${product.oldPrice ? `<span class="text-xs text-slate-400 line-through">${product.oldPrice.toLocaleString()}</span>` : ''}
+                            </div>
+                        </div>
+
+                        <div>
+                            ${qty === 0 ? `
+                                <button onclick="addToCart(${product.id})" class="w-full bg-navy-700 hover:bg-navy-800 text-white font-bold py-2 rounded-xl transition-all text-xs flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-plus"></i> إضافة للسلة
+                                </button>
+                            ` : `
+                                <div class="flex items-center justify-between bg-navy-700 text-white rounded-xl p-1 shadow-sm">
+                                    <button onclick="updateQuantity(${product.id}, -1)" class="w-7 h-7 bg-navy-800 rounded-lg flex items-center justify-center text-xs font-bold hover:bg-navy-900">-</button>
+                                    <span class="font-bold text-xs px-2">${qty}</span>
+                                    <button onclick="updateQuantity(${product.id}, 1)" class="w-7 h-7 bg-navy-800 rounded-lg flex items-center justify-center text-xs font-bold hover:bg-navy-900">+</button>
+                                </div>
+                            `}
+                        </div>
+
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Add to Cart
+        function addToCart(productId) {
+            const product = productsData.find(p => p.id === productId);
+            const existingItem = cart.find(i => i.id === productId);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            showToast(`تمت إضافة "${product.name}" لسلة سكاي مول`);
+            updateCartUI();
+            renderProducts(getCurrentFilteredProducts());
+        }
+
+        function updateQuantity(productId, delta) {
+            const item = cart.find(i => i.id === productId);
+            if (!item) return;
+
+            item.quantity += delta;
+            if (item.quantity <= 0) {
+                cart = cart.filter(i => i.id !== productId);
+            }
+
+            updateCartUI();
+            renderProducts(getCurrentFilteredProducts());
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(i => i.id !== productId);
+            updateCartUI();
+            renderProducts(getCurrentFilteredProducts());
+            showToast('تم إزالة المنتج من السلة');
+        }
+
+        function updateCartUI() {
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const grandTotal = subtotal > 0 ? (subtotal + DELIVERY_FEE) : 0;
+
+            document.getElementById('cart-badge').innerText = totalCount;
+            document.getElementById('mobile-cart-badge').innerText = totalCount;
+            document.getElementById('cart-drawer-count').innerText = totalCount;
+            document.getElementById('cart-header-total').innerText = `${grandTotal.toLocaleString()} ر.ي`;
+
+            const cartContainer = document.getElementById('cart-items-list');
+            if (cart.length === 0) {
+                cartContainer.innerHTML = `
+                    <div class="text-center py-16 text-slate-400 space-y-3">
+                        <i class="fa-solid fa-basket-shopping text-5xl opacity-30"></i>
+                        <p class="font-bold text-xs">سلة الشراء فارغة حالياً</p>
+                    </div>
+                `;
+            } else {
+                cartContainer.innerHTML = cart.map(item => `
+                    <div class="py-3 flex items-center gap-3">
+                        <div class="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center text-xl shrink-0">
+                            ${item.icon}
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h5 class="font-bold text-xs text-navy-900 truncate">${item.name}</h5>
+                            <p class="text-[10px] text-slate-400">${item.price.toLocaleString()} ر.ي</p>
+                            <div class="flex items-center gap-2 mt-1">
+                                <button onclick="updateQuantity(${item.id}, -1)" class="w-5 h-5 bg-slate-100 rounded text-xs font-bold text-slate-700">-</button>
+                                <span class="text-xs font-bold">${item.quantity}</span>
+                                <button onclick="updateQuantity(${item.id}, 1)" class="w-5 h-5 bg-slate-100 rounded text-xs font-bold text-slate-700">+</button>
+                            </div>
+                        </div>
+                        <div class="text-left">
+                            <span class="font-black text-xs text-amberGold-600 block">${(item.price * item.quantity).toLocaleString()} ر.ي</span>
+                            <button onclick="removeFromCart(${item.id})" class="text-red-400 hover:text-red-600 text-xs mt-1">
+                                <i class="fa-regular fa-trash-can"></i>
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            document.getElementById('cart-subtotal').innerText = `${subtotal.toLocaleString()} ر.ي`;
+            document.getElementById('cart-delivery').innerText = subtotal > 0 ? `${DELIVERY_FEE.toLocaleString()} ر.ي` : '0 ر.ي';
+            document.getElementById('cart-total').innerText = `${grandTotal.toLocaleString()} ر.i`;
+            document.getElementById('checkout-modal-total').innerText = `${grandTotal.toLocaleString()} ر.ي`;
+        }
+
+        // Filtering
+        let activeCategory = 'all';
+
+        function filterByCategory(category) {
+            activeCategory = category;
+            
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-navy-700', 'text-white');
+                btn.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+            });
+
+            renderProducts(getCurrentFilteredProducts());
+        }
+
+        function getCurrentFilteredProducts() {
+            if (activeCategory === 'all') return productsData;
+            return productsData.filter(p => p.category === activeCategory);
+        }
+
+        function handleSearch(query) {
+            const cleanQuery = query.trim().toLowerCase();
+            const suggestionsBox = document.getElementById('search-suggestions');
+
+            if (cleanQuery === '') {
+                suggestionsBox.classList.add('hidden');
+                renderProducts(getCurrentFilteredProducts());
+                return;
+            }
+
+            const matched = productsData.filter(p => p.name.toLowerCase().includes(cleanQuery));
+            renderProducts(matched);
+
+            if (matched.length > 0) {
+                suggestionsBox.classList.remove('hidden');
+                suggestionsBox.innerHTML = matched.map(item => `
+                    <div onclick="openProductModal(${item.id}); document.getElementById('search-suggestions').classList.add('hidden')" class="px-4 py-2 hover:bg-slate-50 cursor-pointer flex items-center justify-between text-xs">
+                        <span class="font-bold">${item.icon} ${item.name}</span>
+                        <span class="text-amberGold-600 font-black">${item.price.toLocaleString()} ر.ي</span>
+                    </div>
+                `).join('');
+            } else {
+                suggestionsBox.classList.add('hidden');
+            }
+        }
+
+        function toggleWishlist(productId) {
+            const index = wishlist.indexOf(productId);
+            const product = productsData.find(p => p.id === productId);
+
+            if (index > -1) {
+                wishlist.splice(index, 1);
+                showToast(`تم إزالة "${product.name}" من المفضلة`);
+            } else {
+                wishlist.push(productId);
+                showToast(`تمت إضافة "${product.name}" للمفضلة`);
+            }
+
+            document.getElementById('wishlist-badge').innerText = wishlist.length;
+            renderProducts(getCurrentFilteredProducts());
+        }
+
+        function openWishlist() {
+            const container = document.getElementById('wishlist-items-container');
+            if (wishlist.length === 0) {
+                container.innerHTML = '<p class="text-center text-xs text-slate-400 py-6">قائمة المفضلة فارغة حالياً</p>';
+            } else {
+                const items = productsData.filter(p => wishlist.includes(p.id));
+                container.innerHTML = items.map(p => `
+                    <div class="flex items-center justify-between border-b border-slate-100 py-2">
+                        <div class="flex items-center gap-2">
+                            <span class="text-2xl">${p.icon}</span>
+                            <div>
+                                <h5 class="text-xs font-bold text-navy-900">${p.name}</h5>
+                                <span class="text-[10px] text-amberGold-600 font-bold">${p.price.toLocaleString()} ر.ي</span>
+                            </div>
+                        </div>
+                        <button onclick="addToCart(${p.id})" class="bg-navy-700 text-white text-xs px-3 py-1 rounded-lg">إضافة للسلة</button>
+                    </div>
+                `).join('');
+            }
+            toggleModal('wishlist-modal');
+        }
+
+        function openProductModal(productId) {
+            const product = productsData.find(p => p.id === productId);
+            if (!product) return;
+
+            document.getElementById('modal-product-icon').innerText = product.icon;
+            document.getElementById('modal-product-title').innerText = product.name;
+            document.getElementById('modal-product-category').innerText = getCategoryLabel(product.category);
+            document.getElementById('modal-product-unit').innerText = `الكمية / التعبئة: ${product.unit}`;
+            document.getElementById('modal-product-desc').innerText = product.desc;
+            document.getElementById('modal-product-price').innerText = `${product.price.toLocaleString()} ر.ي`;
+
+            document.getElementById('modal-add-btn').onclick = () => {
+                addToCart(product.id);
+                toggleModal('product-detail-modal');
+            };
+
+            toggleModal('product-detail-modal');
+        }
+
+        function toggleCartDrawer(open) {
+            const backdrop = document.getElementById('cart-drawer-backdrop');
+            const drawer = document.getElementById('cart-drawer');
+
+            if (open) {
+                backdrop.classList.remove('opacity-0', 'pointer-events-none');
+                drawer.classList.remove('-translate-x-full');
+            } else {
+                backdrop.classList.add('opacity-0', 'pointer-events-none');
+                drawer.classList.add('-translate-x-full');
+            }
+        }
+
+        function toggleModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                setTimeout(() => modal.classList.remove('opacity-0'), 10);
+            } else {
+                modal.classList.add('opacity-0');
+                setTimeout(() => modal.classList.add('hidden'), 300);
+            }
+        }
+
+        function openCheckoutModal() {
+            if (cart.length === 0) {
+                showToast('السلة فارغة! قم بإضافة بعض المنتجات أولاً');
+                return;
+            }
+            toggleCartDrawer(false);
+            toggleModal('checkout-modal');
+        }
+
+        function handleCheckoutSubmit(e) {
+            e.preventDefault();
+            document.getElementById('checkout-step-1').classList.add('hidden');
+            document.getElementById('checkout-step-success').classList.remove('hidden');
+            document.getElementById('order-id-display').innerText = `#SKY-${Math.floor(1000 + Math.random() * 9000)}`;
+            
+            cart = [];
+            updateCartUI();
+        }
+
+        function closeCheckoutModalAndReset() {
+            toggleModal('checkout-modal');
+            setTimeout(() => {
+                document.getElementById('checkout-step-1').classList.remove('hidden');
+                document.getElementById('checkout-step-success').classList.add('hidden');
+            }, 300);
+        }
+
+        function showToast(message) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'bg-navy-900 text-white text-xs font-bold px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-2 transform translate-y-2 transition-all duration-300 pointer-events-auto border border-navy-700';
+            toast.innerHTML = `<i class="fa-solid fa-circle-check text-amberGold-400"></i> ${message}`;
+
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.classList.add('opacity-0', '-translate-y-2');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        function getCategoryLabel(cat) {
+            const map = {
+                grocery: 'المواد الغذائية',
+                veggies: 'خضروات وفواكه',
+                dairy: 'ألبان وأجبان',
+                beverages: 'عصائر ومشروبات',
+                snacks: 'حلويات وبسكويت',
+                household: 'مستلزمات منزلية'
+            };
+            return map[cat] || 'عام';
+        }
+    </script>
+</body>
+</html>
